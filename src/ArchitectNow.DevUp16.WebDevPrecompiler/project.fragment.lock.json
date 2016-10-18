@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "exports": {
+    "ArchitectNow.DevUp16.WebDevPrecompiler.Data/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.1",
+      "compile": {
+        "bin/Debug/ArchitectNow.DevUp16.WebDevPrecompiler.Data.dll": {}
+      },
+      "runtime": {
+        "../../packages/Autofac.4.0.0/lib/net451/Autofac.dll": {},
+        "../../packages/Autofac.Extensions.DependencyInjection.4.0.0/lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {},
+        "../../packages/Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0/lib/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
+        "../../packages/Microsoft.Win32.Primitives.4.0.1/lib/net46/Microsoft.Win32.Primitives.dll": {},
+        "../../packages/System.AppContext.4.1.0/lib/net46/System.AppContext.dll": {},
+        "../../packages/System.Console.4.0.0/lib/net46/System.Console.dll": {},
+        "../../packages/System.Diagnostics.DiagnosticSource.4.0.0/lib/net46/System.Diagnostics.DiagnosticSource.dll": {},
+        "../../packages/System.Globalization.Calendars.4.0.1/lib/net46/System.Globalization.Calendars.dll": {},
+        "../../packages/System.IO.Compression.4.1.0/lib/net46/System.IO.Compression.dll": {},
+        "../../packages/System.IO.Compression.ZipFile.4.0.1/lib/net46/System.IO.Compression.ZipFile.dll": {},
+        "../../packages/System.IO.FileSystem.4.0.1/lib/net46/System.IO.FileSystem.dll": {},
+        "../../packages/System.IO.FileSystem.Primitives.4.0.1/lib/net46/System.IO.FileSystem.Primitives.dll": {},
+        "../../packages/System.Net.Http.4.1.0/lib/net46/System.Net.Http.dll": {},
+        "../../packages/System.Net.Sockets.4.1.0/lib/net46/System.Net.Sockets.dll": {},
+        "../../packages/System.Runtime.InteropServices.RuntimeInformation.4.0.0/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {},
+        "../../packages/System.Security.Cryptography.Algorithms.4.2.0/lib/net461/System.Security.Cryptography.Algorithms.dll": {},
+        "../../packages/System.Security.Cryptography.Encoding.4.0.0/lib/net46/System.Security.Cryptography.Encoding.dll": {},
+        "../../packages/System.Security.Cryptography.Primitives.4.0.0/lib/net46/System.Security.Cryptography.Primitives.dll": {},
+        "../../packages/System.Security.Cryptography.X509Certificates.4.1.0/lib/net461/System.Security.Cryptography.X509Certificates.dll": {},
+        "bin/Debug/ArchitectNow.DevUp16.WebDevPrecompiler.Data.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/ArchitectNow.DevUp16.WebDevPrecompiler.Data.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
