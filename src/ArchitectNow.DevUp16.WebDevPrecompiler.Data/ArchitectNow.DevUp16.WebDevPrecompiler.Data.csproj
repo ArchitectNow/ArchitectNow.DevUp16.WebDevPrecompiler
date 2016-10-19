@@ -121,15 +121,18 @@
     <Compile Include="AutofacConfig.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IBaseModel.cs" />
-    <Compile Include="Models\ValueModel.cs" />
+    <Compile Include="Models\LoginResult.cs" />
+    <Compile Include="Models\ToDo.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseStaticRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
-    <Compile Include="Repositories\ValuesRepository.cs" />
+    <Compile Include="Repositories\IToDoRepository.cs" />
+    <Compile Include="Repositories\ToDoRepository.cs" />
+    <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\SecurityService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

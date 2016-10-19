@@ -14,18 +14,17 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Tests
 
         public BaseUnitTest()
         {
+            var builder = new ContainerBuilder();
 
+            Data.AutofacConfig.ConfigureContainer(builder);
+
+            Container = builder.Build();
         }
 
         [ClassInitialize]
         public void InitializeContainer()
         {
-            //var builder = new ContainerBuilder();
 
-            //ArchitectNow.DevUp16.WebDevPrecompiler.AutofacConfig.ConfigureContainer(builder);
-            //Data.AutofacConfig.ConfigureContainer(builder);
-
-            //Container = builder.Build();
         }
     }
 }

@@ -133,10 +133,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiTests\TestControllerTests.cs" />
     <Compile Include="BaseUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryTests\ValueRepositoryTests.cs" />
+    <Compile Include="RepositoryTests\ToDoRespositoryTests.cs" />
+    <Compile Include="ServiceTests\SecurityServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArchitectNow.DevUp16.WebDevPrecompiler.Data\ArchitectNow.DevUp16.WebDevPrecompiler.Data.csproj">
@@ -149,7 +149,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ServiceTests\" />
+    <Folder Include="ApiTests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

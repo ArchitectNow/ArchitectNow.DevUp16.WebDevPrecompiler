@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories;
 using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
+using Autofac;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Tests.RepositoryTests
 {
@@ -11,9 +12,9 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Tests.RepositoryTests
     /// Summary description for ValueRepositoryTests
     /// </summary>
     [TestClass]
-    public class ValueRepositoryTests
+    public class ToDoRespositoryTests : BaseUnitTest
     {
-        public ValueRepositoryTests()
+        public ToDoRespositoryTests()
         {
             //
             // TODO: Add constructor logic here
@@ -24,7 +25,7 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Tests.RepositoryTests
         [TestCategory("Repository")]
         public void GetValueBadId()
         {
-            var _repo = new ValuesRepository();
+            var _repo = this.Container.Resolve<IToDoRepository>();
 
             var _results = _repo.GetOne(Guid.NewGuid());
 
@@ -35,10 +36,10 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Tests.RepositoryTests
         [TestCategory("Repository")]
         public void CreateNewValue()
         {
-            var _repo = new ValuesRepository();
+            var _repo = this.Container.Resolve<IToDoRepository>();
 
-            var _newValue = new ValueModel();
-            _newValue.Name = "Joe";
+            var _newValue = new ToDo();
+            _newValue.Title = "Test";
             _newValue.Id = Guid.NewGuid();
 
             _repo.Save(_newValue);

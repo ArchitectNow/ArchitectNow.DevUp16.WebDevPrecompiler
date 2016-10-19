@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories
 {
-    public class ValuesRepository : BaseStaticRepository<ValueModel>
+    public class ToDoRepository : BaseStaticRepository<ToDo>, IToDoRepository
     {
-        public ValuesRepository()
+        public ToDoRepository()
         {
             
         }
