@@ -16,21 +16,27 @@ export class LoginComponent implements OnInit {
     isLoggingIn: boolean;
     errMessage: string;
 
-    constructor(private _securityApiService: SecurityApiService, private router: Router) {
+    constructor(private _securityApiService: SecurityApiService, private router: Router, private store: Store) {
 
     }
 
     ngOnInit() {
-
+        this.store.currentUser = null;  //Logout...essentially :)
     }
 
     login() {
         this._securityApiService.login(this.userName, this.password)
             .subscribe((result) => {
-            //test
+                if (result.isAuthenticated) {
+                    this.store.currentUser = result.currentUser;
+                    this.router.navigate(['/app/home']);
+                }
+                else {
+                    this.errMessage = result.message;
+                }
         },
         (err) => {
-
+            this.errMessage = err.message;
         },
         () => {
 

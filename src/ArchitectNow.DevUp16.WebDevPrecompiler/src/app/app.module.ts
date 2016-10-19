@@ -14,6 +14,7 @@ import { TodoApiService } from "./api/ToDo.Api.Service";
 import { LoginComponent } from "./components/login/login.component";
 import { ShellComponent } from "./components/shell/shell.component";
 import { ToDosComponent } from "./components/todos/todos.component";
+import { AuthGuard } from "./utilities/AuthGuard";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { ToDosComponent } from "./components/todos/todos.component";
         SidebarService,
         Store,
         TodoApiService,
-        SecurityApiService
+        SecurityApiService,
+        AuthGuard
     ],
     bootstrap: [
         AppComponent
