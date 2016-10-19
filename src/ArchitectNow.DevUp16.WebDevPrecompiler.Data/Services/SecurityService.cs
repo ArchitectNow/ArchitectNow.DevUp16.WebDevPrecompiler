@@ -31,11 +31,11 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data.Services
                 var _user = new User();
                 _user.UserName = UserName;
 
-                return await Task.FromResult<LoginResult>(new Models.LoginResult() { CurrentUser = _user, IsAuthenticated = true });
+                return await Task.FromResult(new Models.LoginResult() { CurrentUser = _user, IsAuthenticated = true });
             }
             else
             {
-                return await Task.FromResult<LoginResult>(new LoginResult() { IsAuthenticated = false, Message = "Invalid credentials" });
+                return await Task.FromResult(new LoginResult() { IsAuthenticated = false, Message = "Invalid credentials" });
             }
         }
     }
