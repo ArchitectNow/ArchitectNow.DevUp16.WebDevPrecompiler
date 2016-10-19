@@ -11,12 +11,18 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
+            var builder = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
+
+#if DEBUG
+            builder.UseUrls("http://0.0.0.0:17797");
+#endif
+
+            var host = builder
+               .Build();
 
             host.Run();
         }

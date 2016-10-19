@@ -8,7 +8,7 @@
         "bin/Debug/ArchitectNow.DevUp16.WebDevPrecompiler.Data.dll": {}
       },
       "runtime": {
-        "../../packages/Autofac.4.0.0/lib/net451/Autofac.dll": {},
+        "../../packages/Autofac.4.1.1/lib/net45/Autofac.dll": {},
         "../../packages/Autofac.Extensions.DependencyInjection.4.0.0/lib/netstandard1.1/Autofac.Extensions.DependencyInjection.dll": {},
         "../../packages/Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0/lib/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {},
         "../../packages/Microsoft.Win32.Primitives.4.0.1/lib/net46/Microsoft.Win32.Primitives.dll": {},
