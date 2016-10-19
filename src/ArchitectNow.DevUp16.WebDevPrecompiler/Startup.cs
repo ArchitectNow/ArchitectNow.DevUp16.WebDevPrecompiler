@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-
+using ArchitectNow.DevUp16.WebDevPrecompiler.Filters;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler
 {
@@ -19,8 +19,12 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
         public IConfigurationRoot Configuration { get; private set; }
         public IContainer ApplicationContainer { get; private set; }
 
+        public IHostingEnvironment env;
+
         public Startup(IHostingEnvironment env)
         {
+            this.env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -32,7 +36,7 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(o => o.Filters.Add(new GlobalExceptionFilter(env.EnvironmentName)));
 
             services.AddSwaggerGen();
 
@@ -59,14 +63,13 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUi();
             }
 
             app.UseMvc();
 
-            app.UseSwagger();
-            app.UseSwaggerUi();
-
-            var _value = Configuration["Section2:MoreData"];
+            var _value = Configuration["database:connectionString"];
 
             // If you want to dispose of resources that have been resolved in the
             // application container, register for the "ApplicationStopped" event.
