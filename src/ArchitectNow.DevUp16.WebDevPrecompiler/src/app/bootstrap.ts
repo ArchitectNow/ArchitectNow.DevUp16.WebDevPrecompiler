@@ -1,12 +1,5 @@
-﻿import { AppComponent } from "./app.component";
-import { HTTP_PROVIDERS } from "@angular/http";
-import { bootstrap } from "@angular/platform-browser-dynamic";
-import { APP_ROUTER_PROVIDERS, APP_BASE_PROVIDERS } from "./routes";
-import { provideForms } from "@angular/forms";
+﻿import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app.module";
 
-bootstrap(AppComponent, [
-    HTTP_PROVIDERS,
-    APP_ROUTER_PROVIDERS,
-    APP_BASE_PROVIDERS,
-    provideForms()
-]).catch((err: any) => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch((err: any) => console.error(err));

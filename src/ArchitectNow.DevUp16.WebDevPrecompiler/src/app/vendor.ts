@@ -4,7 +4,4 @@ import "@angular/core";
 import "@angular/common";
 import "@angular/http";
 import "@angular/router";
-import "jquery";
-import "bootstrap";
-import "ng2-bs3-modal/ng2-bs3-modal";
-import "lodash";
+import "ng2-bootstrap";

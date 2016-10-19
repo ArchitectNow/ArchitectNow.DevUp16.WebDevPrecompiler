@@ -1,0 +1,83 @@
+@import "../../../../scss/variables";
+
+:host {
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  transition: all 0.25s;
+  margin-left: -$sidebar-width;
+  background: $sidebar-bg;
+  &.opened {
+    margin-left: 0;
+  }
+}
+
+.navbar {
+  padding: 0;
+  border: none;
+}
+
+.nav > li {
+  position: relative;
+  line-height: 20px;
+  display: inline-block;
+  width: 100%;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 3px;
+    transition: width .2s ease-in;
+  }
+  // brand
+  &:nth-child(1) {
+    margin: 1rem 0 2rem;
+    &:before {
+      padding-left: $grid-gutter-width / 2;
+    }
+  }
+  &:nth-child(2):before {
+    background-color: #ec1b5a;
+  }
+  &:nth-child(3):before {
+    background-color: #79aefe;
+  }
+  &:nth-child(4):before {
+    background-color: #314190;
+  }
+  &:nth-child(5):before {
+    background-color: #279636;
+  }
+  &:nth-child(6):before {
+    background-color: #7d5d81;
+  }
+  &:nth-child(7):before {
+    background-color: #ead24c;
+  }
+  &:nth-child(8):before {
+    background-color: #2d2366;
+  }
+  &:nth-child(9):before {
+    background-color: #35acdf;
+  }
+  &.active:before, &:hover:before, &.open:hover:before {
+    width: 100%;
+    transition: width .2s ease-in;
+  }
+  a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding-left: $grid-gutter-width;
+    z-index: 2;
+    background-color: transparent;
+    &:hover, &:active, &:focus {
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+}
+

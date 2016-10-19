@@ -1,6 +1,7 @@
-$grid-columns: 12;
+$sidebar-width: 220px;
+$sidebar-bg: #1a1a1a;
 
-//– set default variables
+$sidebar-toggle-bg: blue;
+// override bootstrap styles above this comment
 @import "bootstrap/variables";
-// Core mixins
 @import "bootstrap/mixins";

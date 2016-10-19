@@ -1,0 +1,43 @@
+@import "../../../../scss/variables";
+
+:host {
+  position: absolute;
+  top: 15px;
+}
+
+.sidebar-toggle {
+  position: relative;
+  float: left;
+  margin-left: $navbar-padding-horizontal;
+  @include navbar-vertical-align(34px);
+  border-radius: 0;
+  padding: 0;
+  &:focus {
+    outline: 0;
+  }
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 42px;
+    height: 5px;
+    border-radius: 0;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+}
+
+.sidebar-toggle {
+  border: none;
+  background-color: transparent;
+  .icon-bar {
+    background-color: #1a1a1a;
+  }
+  &:hover {
+    background-color: transparent;
+    .icon-bar {
+      background-color: lightgrey;
+    }
+  }
+
+}

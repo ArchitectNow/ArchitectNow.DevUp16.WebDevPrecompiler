@@ -19,3 +19,12 @@ npm start
 npm rebuild
 npm start
 ```
+
+# How to Rename Project (windows only)
+1. Navigate to scripts folder
+2. Run PrepareProject.bat
+3. Enter the desired namespace
+4. Delete the scripts folder 
+
+# TODO:
+ - add bash option for renaming project
