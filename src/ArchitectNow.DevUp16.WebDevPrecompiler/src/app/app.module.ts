@@ -11,12 +11,18 @@ import { SidebarService } from "./components/shared/sidebar/sidebar.service";
 import { Store } from "./store/Store";
 import { SecurityApiService } from "./api/Security.Api.Service";
 import { TodoApiService } from "./api/ToDo.Api.Service";
-
+import { LoginComponent } from "./components/login/login.component";
+import { ShellComponent } from "./components/shell/shell.component";
+import { ToDosComponent } from "./components/todos/todos.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        LoginComponent,
+        ToDosComponent,
+        ShellComponent
+
     ],
     imports: [
         BrowserModule,
@@ -24,13 +30,14 @@ import { TodoApiService } from "./api/ToDo.Api.Service";
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
-        RouterModule.forRoot(APP_ROUTES),
+        RouterModule.forRoot(APP_ROUTES)
+
+    ],
+    providers: [
+        SidebarService,
         Store,
         TodoApiService,
         SecurityApiService
-    ],
-    providers: [
-        SidebarService
     ],
     bootstrap: [
         AppComponent

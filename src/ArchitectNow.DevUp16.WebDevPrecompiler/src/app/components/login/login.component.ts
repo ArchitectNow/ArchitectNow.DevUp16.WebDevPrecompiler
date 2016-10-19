@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     login() {
         this._securityApiService.login(this.userName, this.password)
             .subscribe((result) => {
-           
+            //test
         },
         (err) => {
 

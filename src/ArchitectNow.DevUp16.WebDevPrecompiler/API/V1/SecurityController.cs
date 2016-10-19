@@ -1,4 +1,5 @@
-﻿using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
+﻿using ArchitectNow.DevUp16.WebDevPrecompiler.API.V1.Models;
+using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,15 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<LoginResult> Login([FromQuery]string UserName, [FromQuery]string Password)
+        [ExpandParameters]
+        public async Task<LoginResult> Login([FromBody]LoginParameters Params)
         {
-            return await this._securityService.Login(UserName, Password);
+            if (Params==null)
+            {
+                throw new ArgumentNullException(nameof(Params));
+            }
+
+            return await this._securityService.Login(Params.UserName, Params.Password);
         }
     }
 }
