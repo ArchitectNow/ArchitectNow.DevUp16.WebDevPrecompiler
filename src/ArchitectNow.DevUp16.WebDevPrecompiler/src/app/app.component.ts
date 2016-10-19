@@ -1,4 +1,5 @@
 ﻿import { Component, ViewEncapsulation } from "@angular/core";
+import { Store } from "./store/Store";
 
 @Component({
     selector: 'app',
@@ -7,5 +8,7 @@
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+    constructor(protected store: Store) {
 
+    }
 }

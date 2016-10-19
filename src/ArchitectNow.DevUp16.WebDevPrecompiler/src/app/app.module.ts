@@ -8,6 +8,10 @@ import { HomeComponent } from "./components/home/home.component";
 import { APP_ROUTES } from "./app.routes";
 import { SharedModule } from "./components/shared/shared.module";
 import { SidebarService } from "./components/shared/sidebar/sidebar.service";
+import { Store } from "./store/Store";
+import { SecurityApiService } from "./api/Security.Api.Service";
+import { TodoApiService } from "./api/ToDo.Api.Service";
+
 
 @NgModule({
     declarations: [
@@ -21,6 +25,9 @@ import { SidebarService } from "./components/shared/sidebar/sidebar.service";
         ReactiveFormsModule,
         SharedModule,
         RouterModule.forRoot(APP_ROUTES),
+        Store,
+        TodoApiService,
+        SecurityApiService
     ],
     providers: [
         SidebarService

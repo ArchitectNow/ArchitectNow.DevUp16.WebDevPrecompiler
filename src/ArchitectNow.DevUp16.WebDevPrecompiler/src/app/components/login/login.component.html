@@ -1,0 +1,45 @@
+<div class="container">
+  <main id="content" class="widget-login-container" role="main">
+    <div class="row">
+      <div class="col-xl-4 col-md-6 col-xs-10 col-xl-offset-4 col-md-offset-3 col-xs-offset-1">
+        <h5 class="widget-login-logo animated fadeInUp">
+
+          DevUp16 - PreCompiler Login
+
+        </h5>
+        <section class="widget widget-login animated fadeInUp">
+          <header>
+            <h3>Login</h3>
+          </header>
+          <div class="widget-body">
+            <div class="mt-lg" [hidden]="!isLoggingIn">
+                Logging in...
+
+            </div>
+            <form class="login-form mt-lg" [hidden]="isLoggingIn">
+              <div class="form-group">
+                <input type="text" name="userName" required [(ngModel)]="userName" class="form-control" id="userName" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" name="password" id="pswd" type="password" [(ngModel)]="password" placeholder="">
+              </div>
+                <div>{{ errMessage }}</div>
+              <div class="clearfix">
+                <div class="btn-toolbar pull-xs-right m-t-1">
+                  <button type="button" class="btn btn-secondary btn-sm" routerLink="/register" [disabled]="isLoggingIn">Create an Account</button>
+                  <button class="btn btn-inverse btn-sm" (click)="login()" [disabled]="isLoggingIn || (!email || !password)">Login</button>
+                </div>
+              </div>
+              <div class="row m-t-1">
+
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    2016 I Write Awesome Code, LLC
+  </footer>
+</div>
