@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 using Microsoft.AspNetCore.Mvc;
+using ArchitectNow.DevUp16.WebDevPrecompiler.Filters;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
 {
     [Route("api/v1/[controller]/[action]")]
+    [EnsureToken]
     public class TodoController : BaseController
     {
         private IToDoRepository _toDoRepository;
