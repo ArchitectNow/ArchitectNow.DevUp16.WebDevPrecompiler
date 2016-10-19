@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
     {
         path: 'app', component: ShellComponent, canActivate: [AuthGuard],
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'todos', component: ToDosComponent },
             { path: 'about', loadChildren: './components/+about/about.module#AboutModule' }

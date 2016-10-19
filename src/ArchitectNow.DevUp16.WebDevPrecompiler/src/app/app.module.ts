@@ -10,11 +10,13 @@ import { SharedModule } from "./components/shared/shared.module";
 import { SidebarService } from "./components/shared/sidebar/sidebar.service";
 import { Store } from "./store/Store";
 import { SecurityApiService } from "./api/Security.Api.Service";
-import { TodoApiService } from "./api/ToDo.Api.Service";
+import { TodoApiService } from "./api/Todo.Api.Service";
 import { LoginComponent } from "./components/login/login.component";
 import { ShellComponent } from "./components/shell/shell.component";
 import { ToDosComponent } from "./components/todos/todos.component";
 import { AuthGuard } from "./utilities/AuthGuard";
+import { ToDoService } from "./services/ToDoService";
+
 
 @NgModule({
     declarations: [
@@ -39,6 +41,7 @@ import { AuthGuard } from "./utilities/AuthGuard";
         Store,
         TodoApiService,
         SecurityApiService,
+        ToDoService,
         AuthGuard
     ],
     bootstrap: [
