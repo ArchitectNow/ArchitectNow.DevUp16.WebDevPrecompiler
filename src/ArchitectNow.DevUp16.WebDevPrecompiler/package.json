@@ -24,13 +24,7 @@
   },
   "devDependencies": {
     "@types/core-js": "0.9.28",
-    "@types/hammerjs": "2.0.28",
-    "@types/jasmine": "2.2.29",
-    "@types/jquery": "1.10.31",
     "@types/node": "6.0.38",
-    "@types/source-map": "0.1.26",
-    "@types/uglify-js": "2.0.27",
-    "@types/webpack": "1.12.29",
     "angular2-router-loader": "0.3.3",
     "autoprefixer": "6.3.1",
     "awesome-typescript-loader": "2.2.1",

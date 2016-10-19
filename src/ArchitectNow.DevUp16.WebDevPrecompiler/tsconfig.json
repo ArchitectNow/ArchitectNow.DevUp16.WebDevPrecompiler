@@ -10,19 +10,13 @@
     "sourceMap": true,
     "noEmitHelpers": false,
     "strictNullChecks": false,
-    "baseUrl": "./Src",
-    "paths": {},
+    "baseUrl": "./src",
     "lib": [
       "dom",
       "es6"
     ],
     "types": [
-      "jasmine",
-      "jquery",
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+      "node"
     ]
   },
   "exclude": [
@@ -33,7 +27,5 @@
     "forkChecker": false,
     "useWebpackText": true
   },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "compileOnSave": false
 }
