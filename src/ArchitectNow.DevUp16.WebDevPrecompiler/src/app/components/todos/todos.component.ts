@@ -1,4 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ToDoService } from "../../services/ToDoService";
+import { Store } from "../../store/Store";
+import { ToDo } from "../../models/ToDo";
+
 
 @Component({
     template: require('./todos.component.html'),
@@ -7,5 +11,23 @@ import { Component } from "@angular/core";
     ],
 })
 export class ToDosComponent {
-    constructor () {}
+
+    data: ToDo[];
+    filter: string = "";
+
+    constructor(private _todoService: ToDoService, private _store: Store) {
+    }
+
+    ngOnInit() {
+        this._todoService.getTodos(this.filter).subscribe(
+            (data) => {
+                this.data = data;
+            },
+            (err) => {
+                
+            },
+            () => {
+
+            });
+    }
 }

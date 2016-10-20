@@ -18,7 +18,12 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data
             // to dispose of the container at the end of the app,
             // be sure to keep a reference to it as a property or field.
 
-            Builder.RegisterType<ToDoRepository>().As<IToDoRepository>();
+            var _dummyRepo = new ToDoRepository();
+
+            _dummyRepo.Data.Add(new Models.ToDo() { Title = "Test ToDo" });
+
+            Builder.Register(x => _dummyRepo).As<IToDoRepository>();
+
             Builder.RegisterType<SecurityService>().As<ISecurityService>();
 
         }

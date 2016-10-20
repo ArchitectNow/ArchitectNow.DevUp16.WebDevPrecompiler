@@ -11,6 +11,7 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories
     {
         private List<T> _data = new List<T>();
 
+        public List<T> Data { get { return _data; } }
 
         public IQueryable<T> Query
         {
