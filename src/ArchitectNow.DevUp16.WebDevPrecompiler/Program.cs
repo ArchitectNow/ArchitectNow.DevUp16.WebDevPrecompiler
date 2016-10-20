@@ -18,6 +18,8 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
                 .UseStartup<Startup>();
 
 #if DEBUG
+            //Line below is used for proxy issues with Mac parallels
+
             //builder.UseUrls("http://0.0.0.0:17797");
 #endif
 

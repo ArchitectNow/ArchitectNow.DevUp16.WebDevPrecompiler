@@ -2,7 +2,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <h1>ToDos Page</h1>
+      <h1>ToDos</h1>
+        <ul>
+            <li *ngFor="let todo of data">{{ todo.title}}</li>
+        </ul>
     </div>
   </div>
 </div>

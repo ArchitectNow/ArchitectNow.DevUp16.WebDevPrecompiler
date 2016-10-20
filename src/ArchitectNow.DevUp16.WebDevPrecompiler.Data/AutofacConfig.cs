@@ -20,7 +20,10 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data
 
             var _dummyRepo = new ToDoRepository();
 
-            _dummyRepo.Data.Add(new Models.ToDo() { Title = "Test ToDo" });
+            for (int i = 0; i < 10; i++)
+            {
+                _dummyRepo.Data.Add(new Models.ToDo() { Title = "ToDo-" + i.ToString(), IsClosed = i>5 });
+            }
 
             Builder.Register(x => _dummyRepo).As<IToDoRepository>();
 
