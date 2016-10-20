@@ -10,7 +10,7 @@ using ArchitectNow.DevUp16.WebDevPrecompiler.Filters;
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
 {
     [Route("api/v1/[controller]/[action]")]
-    [EnsureToken]
+    
     public class TodoController : BaseController
     {
         private IToDoRepository _toDoRepository;
@@ -21,7 +21,8 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
         }
 
         [HttpGet]
-        public async Task<List<ToDo>> GetToDos(string Filter = "")
+        [EnsureToken]
+        public async Task<List<ToDo>> GetToDos([FromQuery]string Filter = "")
         {
             List<ToDo> _results;
 
@@ -34,15 +35,16 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
                 _results = _toDoRepository.Query.ToList();
             }
 
-            return await Task.FromResult(_results);
+            return _results;
         }
 
         [HttpPost]
+        [EnsureToken]
         public async Task<ToDo> UpdateToDo([FromBody]ToDo ToDo)
         {
             var _result = _toDoRepository.Save(ToDo);
 
-            return await Task.FromResult(_result);
+            return _result;
         }
     }
 }

@@ -33,8 +33,6 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API
             {
                 throw new ApplicationException("Error configuring base service: " + ex.Message);
             }
-
-            base.OnActionExecuting(context);
         }
 
     }

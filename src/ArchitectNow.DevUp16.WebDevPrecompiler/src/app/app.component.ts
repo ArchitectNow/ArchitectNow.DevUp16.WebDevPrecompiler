@@ -9,6 +9,6 @@ import { Store } from "./store/Store";
 })
 export class AppComponent {
     constructor(protected store: Store) {
-
+        this.store = null;
     }
 }

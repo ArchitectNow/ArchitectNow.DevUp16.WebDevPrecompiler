@@ -18,7 +18,7 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
                 .UseStartup<Startup>();
 
 #if DEBUG
-            builder.UseUrls("http://0.0.0.0:17797");
+            //builder.UseUrls("http://0.0.0.0:17797");
 #endif
 
             var host = builder
