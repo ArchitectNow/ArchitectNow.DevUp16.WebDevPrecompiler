@@ -16,6 +16,8 @@ import { ShellComponent } from "./components/shell/shell.component";
 import { ToDosComponent } from "./components/todos/todos.component";
 import { AuthGuard } from "./utilities/AuthGuard";
 import { ToDoService } from "./services/ToDoService";
+import { ToDoItemComponent } from "./components/todos/todoitem.component";
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ToDoService } from "./services/ToDoService";
         HomeComponent,
         LoginComponent,
         ToDosComponent,
-        ShellComponent
+        ShellComponent,
+        ToDoItemComponent
 
     ],
     imports: [

@@ -1,0 +1,9 @@
+<div>
+    Title: {{ item.title }}&nbsp;
+    <span [hidden]="!item.isClosed">
+        <a (click)="toggleTodo()">Close</a>
+    </span>
+        <span [hidden]="item.isClosed">
+        <a (click)="toggleTodo()">Re-Open</a>
+    </span>
+</div>
