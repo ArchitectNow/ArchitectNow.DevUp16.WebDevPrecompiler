@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Filters
 {
@@ -16,9 +13,9 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Filters
                 context.Result = new UnauthorizedResult();
             }
 
-            var _tokenData = context.HttpContext.Request.Headers["securityToken"];
+            var tokenData = context.HttpContext.Request.Headers["securityToken"];
 
-            if (string.IsNullOrEmpty(_tokenData))
+            if (string.IsNullOrEmpty(tokenData))
             {
                 context.Result = new UnauthorizedResult();
             }

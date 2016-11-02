@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.API
 {
@@ -18,16 +15,16 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API
                 return;
             }
 
-            var _tokenData = context.HttpContext.Request.Headers["securityToken"];
+            var tokenData = context.HttpContext.Request.Headers["securityToken"];
 
-            if (string.IsNullOrEmpty(_tokenData))
+            if (string.IsNullOrEmpty(tokenData))
             {
                 return;
             }
 
             try
             {
-                this.SecurityToken = _tokenData;
+                SecurityToken = tokenData;
             }
             catch (Exception ex)
             {

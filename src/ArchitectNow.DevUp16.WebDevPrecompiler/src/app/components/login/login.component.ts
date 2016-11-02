@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     isLoggingIn: boolean;
     errMessage: string;
 
-    constructor(private _securityApiService: SecurityApiService, private router: Router, private store: Store) {
+    constructor(private securityApiService: SecurityApiService, private router: Router, private store: Store) {
 
     }
 

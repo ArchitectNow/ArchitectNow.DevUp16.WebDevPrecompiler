@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ArchitectNow.DevUp16.WebDevPrecompiler.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
@@ -16,40 +13,36 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
 {
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; private set; }
+        public IConfigurationRoot Configuration { get; }
         public IContainer ApplicationContainer { get; private set; }
-
-        public IHostingEnvironment env;
 
         public Startup(IHostingEnvironment env)
         {
-            this.env = env;
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
                 .AddEnvironmentVariables();
-            this.Configuration = builder.Build();
+            Configuration = builder.Build();
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services, IHostingEnvironment env)
         {
             services.AddMvc(o => o.Filters.Add(new GlobalExceptionFilter(env.EnvironmentName)));
 
             services.AddSwaggerGen();
 
             var builder = new ContainerBuilder();
-
-            AutofacConfig.ConfigureContainer(builder);
-            Data.AutofacConfig.ConfigureContainer(builder);
+	        builder.RegisterModule<DataModule>();
+	        builder.RegisterModule<WebModule>();
 
             builder.Populate(services);
-            this.ApplicationContainer = builder.Build();
+            ApplicationContainer = builder.Build();
 
             // Create the IServiceProvider based on the container.
-            return new AutofacServiceProvider(this.ApplicationContainer);
+            return new AutofacServiceProvider(ApplicationContainer);
 
         }
 
@@ -69,11 +62,11 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler
 
             app.UseMvc();
 
-            var _value = Configuration["database:connectionString"];
+            var value = Configuration["database:connectionString"];
 
             // If you want to dispose of resources that have been resolved in the
             // application container, register for the "ApplicationStopped" event.
-            appLifetime.ApplicationStopped.Register(() => this.ApplicationContainer.Dispose());
+            appLifetime.ApplicationStopped.Register(() => ApplicationContainer.Dispose());
 
         }
     }

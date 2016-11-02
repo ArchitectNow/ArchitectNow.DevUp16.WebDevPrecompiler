@@ -118,7 +118,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutofacConfig.cs" />
+    <Compile Include="DataModule.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\LoginResult.cs" />

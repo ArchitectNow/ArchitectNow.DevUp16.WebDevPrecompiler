@@ -4,8 +4,6 @@ using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
@@ -13,24 +11,24 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
     [Route("api/v1/[controller]/[action]")]
     public class SecurityController : BaseController
     {
-        private ISecurityService _securityService;
+        private readonly ISecurityService _securityService;
 
-        public SecurityController(ISecurityService SecurityService)
+        public SecurityController(ISecurityService securityService)
         {
-            this._securityService = SecurityService;
+            _securityService = securityService;
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ExpandParameters]
-        public async Task<LoginResult> Login([FromBody]LoginParameters Params)
+        public async Task<LoginResult> Login([FromBody]LoginParameters parameters)
         {
-            if (Params==null)
+            if (parameters==null)
             {
-                throw new ArgumentNullException(nameof(Params));
+                throw new ArgumentNullException(nameof(parameters));
             }
 
-            return await this._securityService.Login(Params.UserName, Params.Password);
+            return await _securityService.Login(parameters.UserName, parameters.Password);
         }
     }
 }

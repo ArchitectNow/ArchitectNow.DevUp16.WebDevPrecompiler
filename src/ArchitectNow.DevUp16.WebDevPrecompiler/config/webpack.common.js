@@ -1,22 +1,22 @@
-var webpack = require('webpack');
+var Webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
-var extractCSS = new ExtractTextPlugin('css/main.css');
+var Helpers = require('./helpers');
+var ExtractCss = new ExtractTextPlugin('css/main.css');
 /*
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const copyWebpackPlugin = require('copy-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const forkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 // const HtmlElementsPlugin = require('./html-elements-plugin');
 
 /*
  * Webpack Constants
  */
-const METADATA = {
+const metadata = {
 	baseUrl: '/',
-	isDevServer: helpers.isWebpackDevServer()
+	isDevServer: Helpers.isWebpackDevServer()
 };
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
 	 *
 	 * See: (custom attribute)
 	 */
-	metadata: METADATA,
+	metadata: metadata,
 	// context: helpers.src(),
 	/*
 	 * The entry point for the bundle
@@ -34,9 +34,9 @@ module.exports = {
 	 * See: http://webpack.github.io/docs/configuration.html#entry
 	 */
 	entry: {
-		'scripts/vendor': helpers.src('app', 'vendor.ts'),
-		'scripts/app': helpers.src('app', 'bootstrap.ts'),
-		'scripts/polyfills': helpers.src('app', 'polyfills.ts')
+		'scripts/vendor': Helpers.src('app', 'vendor.ts'),
+		'scripts/app': Helpers.src('app', 'bootstrap.ts'),
+		'scripts/polyfills': Helpers.src('app', 'polyfills.ts')
 	},
 
 	/*
@@ -103,7 +103,7 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				include: [
-					helpers.src('app')
+					Helpers.src('app')
 				],
 				loader: 'raw-loader!sass-loader'
 			},
@@ -111,9 +111,9 @@ module.exports = {
 				// application wide styles
 				test: /\.scss$/,
 				include: [
-					helpers.src('scss'),
+					Helpers.src('scss'),
 				],
-				loader: extractCSS.extract(['raw-loader', 'sass-loader'])
+				loader: ExtractCss.extract(['raw-loader', 'sass-loader'])
 			}
 		]
 	},
@@ -121,10 +121,10 @@ module.exports = {
 		return [require('autoprefixer')];
 	},
 	plugins: [
-		new webpack.ContextReplacementPlugin(
+		new Webpack.ContextReplacementPlugin(
 			// The (\\|\/) piece accounts for path separators in *nix and Windows
 			/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-			helpers.src()
+			Helpers.src()
 		),
 		/*
 		 * Plugin: ForkCheckerPlugin
@@ -133,7 +133,7 @@ module.exports = {
 		 * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
 		 */
 		// new ForkCheckerPlugin(),
-		extractCSS,
+		ExtractCss,
 		/*
 		 * Plugin: CommonsChunkPlugin
 		 * Description: Shares common code between the pages.
@@ -142,16 +142,16 @@ module.exports = {
 		 * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
 		 * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
 		 */
-		new webpack.optimize.CommonsChunkPlugin({
+		new Webpack.optimize.CommonsChunkPlugin({
 			name: [
 				'scripts/vendor',
 				'scripts/polyfills'
 			]
 		}),
-		new CopyWebpackPlugin([ { from: helpers.src('images'), to: 'images' } ]),
-		new CopyWebpackPlugin([ { from: helpers.src('fonts'), to: 'fonts' } ]),
-		new HtmlWebpackPlugin({
-			template: helpers.src('index.html')
+		new copyWebpackPlugin([ { from: Helpers.src('images'), to: 'images' } ]),
+		new copyWebpackPlugin([ { from: Helpers.src('fonts'), to: 'fonts' } ]),
+		new htmlWebpackPlugin({
+			template: Helpers.src('index.html')
 		})
 	],
 

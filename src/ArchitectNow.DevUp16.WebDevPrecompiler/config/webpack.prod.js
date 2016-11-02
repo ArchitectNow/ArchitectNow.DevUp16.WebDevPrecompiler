@@ -1,18 +1,18 @@
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
+var Webpack = require('webpack');
+var WebpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-var commonConfig = require('./webpack.common.js');
-var helpers = require('./helpers');
+var CommonConfig = require('./webpack.common.js');
+var Helpers = require('./helpers');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const env = process.env.NODE_ENV = process.env.ENV = 'production';
 
-module.exports = webpackMerge(commonConfig, {
+module.exports = WebpackMerge(CommonConfig, {
   devtool: 'source-map',
-  context: helpers.src(),
+  context: Helpers.src(),
   output: {
-    path: helpers.dist(),
+    path: Helpers.dist(),
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
@@ -20,19 +20,19 @@ module.exports = webpackMerge(commonConfig, {
     umdNamedDefine: true
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new Webpack.NoErrorsPlugin(),
+    new Webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('[name].[hash].css'),
-    new webpack.DefinePlugin({
+    new Webpack.DefinePlugin({
       'process.env': {
-        'ENV': JSON.stringify(ENV)
+        'ENV': JSON.stringify(env)
       }
     })
   ],
   devServer: {
     host: 'localhost',
     port: 3000,
-    outputPath: helpers.dist(),
+    outputPath: Helpers.dist(),
     // required for html5 router
     historyApiFallback: true,
     stats: 'minimal'

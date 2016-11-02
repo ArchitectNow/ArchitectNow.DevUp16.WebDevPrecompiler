@@ -2,26 +2,26 @@ const helpers = require('./helpers');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const openBrowserPlugin = require('open-browser-webpack-plugin');
 
 /**
  * Webpack Plugins
  */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
-const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const definePlugin = require('webpack/lib/DefinePlugin');
+const namedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3001;
-const PROXY_PORT = process.env.PROXY_PORT || 17797; // backend port
-const METADATA = webpackMerge(commonConfig.metadata, {
-	host: HOST,
-	port: PORT,
-	proxyPort:PROXY_PORT,
-	ENV: ENV
+const env = process.env.ENV = process.env.NODE_ENV = 'development';
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || 3001;
+const proxyPort = process.env.PROXY_PORT || 17797; // backend port
+const metadata = webpackMerge(commonConfig.metadata, {
+	host: host,
+	port: port,
+	proxyPort:proxyPort,
+	ENV: env
 });
 
 
@@ -36,7 +36,7 @@ module.exports = webpackMerge(commonConfig, {
 	 *
 	 * See: (custom attribute)
 	 */
-	metadata: METADATA,
+	metadata: metadata,
 
 	/**
 	 * Switch loaders to debug mode.
@@ -102,11 +102,11 @@ module.exports = webpackMerge(commonConfig, {
 		 * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
 		 */
 		// NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
-		new DefinePlugin({
-			'ENV': JSON.stringify(METADATA.ENV),
+		new definePlugin({
+			'ENV': JSON.stringify(metadata.ENV),
 			'process.env': {
-				'ENV': JSON.stringify(METADATA.ENV),
-				'NODE_ENV': JSON.stringify(METADATA.ENV)
+				'ENV': JSON.stringify(metadata.ENV),
+				'NODE_ENV': JSON.stringify(metadata.ENV)
 			}
 		}),
 
@@ -114,11 +114,11 @@ module.exports = webpackMerge(commonConfig, {
 			jQuery: 'jquery',
 			$: 'jquery'
 		}),
-		new OpenBrowserPlugin({url: 'http://localhost:' + PORT})
+		new openBrowserPlugin({url: 'http://localhost:' + port})
 	],
 	devServer: {
 		host: '0.0.0.0',
-		port: PORT,
+		port: port,
 		outputPath: helpers.build(),
 		stats: 'minimal',
 		// required for html5 router
@@ -128,7 +128,7 @@ module.exports = webpackMerge(commonConfig, {
 				"target": {
 					"host": "localhost",
 					"protocol": 'http:',
-					"port": PROXY_PORT
+					"port": proxyPort
 				},
 				changeOrigin: true,
 				secure: false
@@ -137,7 +137,7 @@ module.exports = webpackMerge(commonConfig, {
 				"target": {
 					"host": "localhost",
 					"protocol": 'http:',
-					"port": PROXY_PORT
+					"port": proxyPort
 				},
 				changeOrigin: true,
 				secure: false

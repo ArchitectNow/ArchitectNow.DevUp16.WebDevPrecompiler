@@ -33,10 +33,10 @@ export class BaseApiService {
     private BuildHeaders(contentType: string): Headers {
 
         if (this.store && this.store.currentUser) {
-            var _token = this.store.currentUser.id;  //Note we are just using the user ID as a token
+            var token = this.store.currentUser.id;  //Note we are just using the user ID as a token
 
-            if (_token && _token.length > 0) {
-                let headers = new Headers({ 'Content-Type': contentType, 'securityToken': _token });
+            if (token && token.length > 0) {
+                let headers = new Headers({ 'Content-Type': contentType, 'securityToken': token });
                 return headers;
             }
         }
@@ -83,12 +83,12 @@ export class BaseApiService {
                     }
 
                     if (err._body) {
-                        var _errObj = JSON.parse(err._body);
+                        var errObj = JSON.parse(err._body);
 
-                        if (_errObj.message) {
+                        if (errObj.message) {
 
 
-                            obs.error(_errObj.message);
+                            obs.error(errObj.message);
                             return;
                         }
                     }
@@ -119,10 +119,10 @@ export class BaseApiService {
                     }
 
                     if (err._body) {
-                        var _errObj = JSON.parse(err._body);
+                        var errObj = JSON.parse(err._body);
 
-                        if (_errObj.message) {
-                            obs.error(_errObj.message);
+                        if (errObj.message) {
+                            obs.error(errObj.message);
                             return;
                         }
                     }
@@ -157,10 +157,10 @@ export class BaseApiService {
                     }
 
                     if (err._body) {
-                        var _errObj = JSON.parse(err._body);
+                        var errObj = JSON.parse(err._body);
 
-                        if (_errObj.message) {
-                            obs.error(_errObj.message);
+                        if (errObj.message) {
+                            obs.error(errObj.message);
                             return;
                         }
                     }
@@ -195,10 +195,10 @@ export class BaseApiService {
                     }
 
                     if (err._body) {
-                        var _errObj = JSON.parse(err._body);
+                        var errObj = JSON.parse(err._body);
 
-                        if (_errObj.message) {
-                            obs.error(_errObj.message);
+                        if (errObj.message) {
+                            obs.error(errObj.message);
                             return;
                         }
                     }

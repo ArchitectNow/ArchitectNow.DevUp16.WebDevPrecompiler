@@ -1,18 +1,15 @@
-using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories
 {
-    public interface IBaseRepository<T> : IDisposable where T : IBaseModel
-    {
-        T GetOne(Guid Id);
-        T Save(T Item);
-        void Delete(T Item);
-        void Delete(Guid Id);
-        IQueryable<T> Query { get; }
-    }
+	public interface IBaseRepository<T> : IDisposable where T : IBaseModel
+	{
+		T GetOne(Guid id);
+		T Save(T item);
+		void Delete(T item);
+		void Delete(Guid id);
+		IQueryable<T> Query { get; }
+	}
 }

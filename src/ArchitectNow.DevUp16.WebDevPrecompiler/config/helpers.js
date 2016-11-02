@@ -1,35 +1,35 @@
-var path = require('path');
-function createPathFn (basePath) {
+var Path = require('path');
+function CreatePathFn (basePath) {
   return function (args) {
     args = Array.prototype.slice.call(arguments, 0);
-    return path.join.apply(path, [basePath].concat(args));
+    return Path.join.apply(Path, [basePath].concat(args));
   };
 }
-var root = createPathFn(path.resolve(__dirname, '..'));
+var Root = CreatePathFn(Path.resolve(__dirname, '..'));
 
-function hasProcessFlag(flag) {
+function HasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
 }
 
-function isWebpackDevServer() {
+function IsWebpackDevServer() {
   return process.argv[1] && !! (/webpack-dev-server$/.exec(process.argv[1]));
 }
 
 
-function checkNodeImport(context, request, cb) {
-  if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
+function CheckNodeImport(context, request, cb) {
+  if (!Path.isAbsolute(request) && request.charAt(0) !== '.') {
     cb(null, 'commonjs ' + request); return;
   }
   cb();
 }
 
 module.exports = {
-  root: root,
-  config: createPathFn(root('config')),
-  src: createPathFn(root('src')),
-  build: createPathFn(root('wwwroot')),
-  dist: createPathFn(root('wwwroot')),
-  hasProcessFlag: hasProcessFlag,
-  isWebpackDevServer: isWebpackDevServer,
-  checkNodeImport: checkNodeImport
+  root: Root,
+  config: CreatePathFn(Root('config')),
+  src: CreatePathFn(Root('src')),
+  build: CreatePathFn(Root('wwwroot')),
+  dist: CreatePathFn(Root('wwwroot')),
+  hasProcessFlag: HasProcessFlag,
+  isWebpackDevServer: IsWebpackDevServer,
+  checkNodeImport: CheckNodeImport
 };

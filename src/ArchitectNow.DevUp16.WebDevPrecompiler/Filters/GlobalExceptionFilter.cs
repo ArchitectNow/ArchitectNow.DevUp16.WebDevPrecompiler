@@ -1,20 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Filters
 {
     public class GlobalExceptionFilter : IExceptionFilter, IDisposable
     {
-        private string _env = "Development";
+        private readonly string _env;
 
-        public GlobalExceptionFilter(string Env)
+        public GlobalExceptionFilter(string env)
         {
-            _env = Env;
+            _env = env;
         }
 
         public void Dispose()
@@ -25,11 +21,11 @@ namespace ArchitectNow.DevUp16.WebDevPrecompiler.Filters
         public void OnException(ExceptionContext context)
         {
 
-            var _stackTrace = "No stack trace available";
+            var stackTrace = "No stack trace available";
 
             if (_env != "Production")
             {
-                _stackTrace = context.Exception.StackTrace;
+                stackTrace = context.Exception.StackTrace;
             }
 
             var response = new

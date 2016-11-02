@@ -15,7 +15,7 @@ export class ToDosComponent {
     data: ToDo[];
     filter: string = "";
 
-    constructor(private _todoService: ToDoService, private _store: Store) {
+    constructor(private todoService: ToDoService, private store: Store) {
     }
 
     ngOnInit() {

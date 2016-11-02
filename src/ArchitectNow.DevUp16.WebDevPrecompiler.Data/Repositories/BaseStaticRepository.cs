@@ -1,63 +1,55 @@
-using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Models;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories
 {
-    public abstract class BaseStaticRepository<T> : IBaseRepository<T> where T : IBaseModel
-    {
-        private List<T> _data = new List<T>();
+	public abstract class BaseStaticRepository<T> : IBaseRepository<T> where T : IBaseModel
+	{
+		private readonly List<T> _data = new List<T>();
 
-        public List<T> Data { get { return _data; } }
+		public List<T> Data => _data;
 
-        public IQueryable<T> Query
-        {
-            get
-            {
-                return _data.AsQueryable();
-            }
-        }
+		public IQueryable<T> Query => _data.AsQueryable();
 
-        public void Delete(Guid Id)
-        {
-            var _item = GetOne(Id);
+		public void Delete(Guid id)
+		{
+			var item = GetOne(id);
 
-            if (_item == null)
-            {
-                throw new ArgumentOutOfRangeException("Item not found");
-            }
+			if (item == null)
+			{
+				throw new ArgumentOutOfRangeException("Item not found");
+			}
 
-            _data.Remove(_item);
-        }
+			_data.Remove(item);
+		}
 
-        public void Delete(T Item)
-        {
-            Delete(Item.Id);
-        }
+		public void Delete(T item)
+		{
+			Delete(item.Id);
+		}
 
-        public void Dispose()
-        {
+		public void Dispose()
+		{
 
-        }
+		}
 
-        public T GetOne(Guid Id)
-        {
-            return _data.FirstOrDefault(x => x.Id == Id);
-        }
+		public T GetOne(Guid id)
+		{
+			return _data.FirstOrDefault(x => x.Id == id);
+		}
 
-        public T Save(T Item)
-        {
-            //no real implementation on a static repo
+		public T Save(T item)
+		{
+			//no real implementation on a static repo
 
-            if (GetOne(Item.Id) == null)
-            {
-                _data.Add(Item);
-            }
+			if (GetOne(item.Id) == null)
+			{
+				_data.Add(item);
+			}
 
-            return Item;
-        }
-    }
+			return item;
+		}
+	}
 }

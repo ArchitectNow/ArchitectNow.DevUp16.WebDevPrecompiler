@@ -1,5 +1,4 @@
 ﻿using ArchitectNow.DevUp16.WebDevPrecompiler.Data.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,41 +9,40 @@ using ArchitectNow.DevUp16.WebDevPrecompiler.Filters;
 namespace ArchitectNow.DevUp16.WebDevPrecompiler.API.V1
 {
     [Route("api/v1/[controller]/[action]")]
-    
     public class TodoController : BaseController
     {
-        private IToDoRepository _toDoRepository;
+        private readonly IToDoRepository _toDoRepository;
 
-        public TodoController(IToDoRepository ToDoRepository)
+        public TodoController(IToDoRepository toDoRepository)
         {
-            this._toDoRepository = ToDoRepository;
+            _toDoRepository = toDoRepository;
         }
 
         [HttpGet]
         [EnsureToken]
-        public async Task<List<ToDo>> GetToDos([FromQuery]string Filter = "")
+        public async Task<List<ToDo>> GetToDos([FromQuery]string filter = "")
         {
-            List<ToDo> _results;
+            List<ToDo> results;
 
-            if (!string.IsNullOrEmpty(Filter))
+            if (!string.IsNullOrEmpty(filter))
             {
-                _results = _toDoRepository.Query.Where(x => x.Title.Contains(Filter)).ToList();
+                results = _toDoRepository.Query.Where(x => x.Title.Contains(filter)).ToList();
             }
             else
             {
-                _results = _toDoRepository.Query.ToList();
+                results = _toDoRepository.Query.ToList();
             }
 
-            return _results;
+            return await Task.FromResult(results);
         }
 
         [HttpPost]
         [EnsureToken]
-        public async Task<ToDo> UpdateToDo([FromBody]ToDo ToDo)
+        public async Task<ToDo> UpdateToDo([FromBody]ToDo toDo)
         {
-            var _result = _toDoRepository.Save(ToDo);
+            var result = _toDoRepository.Save(toDo);
 
-            return _result;
+            return await Task.FromResult(result);
         }
     }
 }

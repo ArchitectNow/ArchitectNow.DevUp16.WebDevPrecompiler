@@ -5,7 +5,7 @@ import { ToDo } from "../models/ToDo";
 
 @Injectable()
 export class ToDoService {
-    constructor(private _todoApiService: TodoApiService) {
+    constructor(private todoApiService: TodoApiService) {
 
     }
 

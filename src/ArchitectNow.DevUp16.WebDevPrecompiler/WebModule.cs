@@ -1,15 +1,11 @@
 using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArchitectNow.DevUp16.WebDevPrecompiler
 {
-    public static class AutofacConfig
+    public class WebModule : Module
     {
-        public static void ConfigureContainer(ContainerBuilder Builder)
-        {
+	    protected override void Load(ContainerBuilder builder)
+	    {
             // Register dependencies, populate the services from
             // the collection, and build the container. If you want
             // to dispose of the container at the end of the app,

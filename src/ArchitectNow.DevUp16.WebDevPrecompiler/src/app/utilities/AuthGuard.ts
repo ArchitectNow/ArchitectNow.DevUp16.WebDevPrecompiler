@@ -8,7 +8,7 @@ import { Store } from '../store/Store';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private _store: Store, private router: Router) {
+    constructor(private store: Store, private router: Router) {
 
     }
 
