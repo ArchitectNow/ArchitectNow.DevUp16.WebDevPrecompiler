@@ -10,10 +10,10 @@ export class ToDoService {
     }
 
     getTodos(filter: string = ""): Observable<ToDo[]> {
-        return this._todoApiService.getToDos(filter);
+        return this.todoApiService.getToDos(filter);
     }
 
     updateTodo(todo: ToDo): Observable<ToDo> {
-        return this._todoApiService.updateToDo(todo);
+        return this.todoApiService.updateToDo(todo);
     }
 }

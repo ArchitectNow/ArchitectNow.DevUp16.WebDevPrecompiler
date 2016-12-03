@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
      
 
-        if (!this._store || !this._store.currentUser) {
+        if (!this.store || !this.store.currentUser) {
             console.log('No token found, redirect to login');
 
             this.router.navigate(['/login']);

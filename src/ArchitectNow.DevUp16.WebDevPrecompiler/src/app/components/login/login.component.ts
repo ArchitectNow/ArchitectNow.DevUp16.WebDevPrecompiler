@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this._securityApiService.login(this.userName, this.password)
+        this.securityApiService.login(this.userName, this.password)
             .subscribe((result) => {
                 if (result.isAuthenticated) {
                     this.store.currentUser = result.currentUser;

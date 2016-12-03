@@ -19,7 +19,7 @@ export class ToDosComponent {
     }
 
     ngOnInit() {
-        this._todoService.getTodos(this.filter).subscribe(
+        this.todoService.getTodos(this.filter).subscribe(
             (data) => {
                 this.data = data;
             },
